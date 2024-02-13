@@ -1,0 +1,135 @@
+<%- include('./nav.ejs') %>
+    <br><br><br><br>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="card" style="background-color: black;">
+                    <br>
+                    <center> <img src="<%= i.url %>" alt="" width="175" height="175" class="rounded-circle">
+                    </center>
+                    <br><br>
+                    <!-- <center>  <label for="">User_Name:</label><center>  -->
+                    <center> <input style="border: white; background-color: #2a1a6f; color: yellow; font-size: 25px;
+                            font-family: cursive; " type="text" style="text-transform: uppercase;" class="text-center"
+                            value="<%= n %>" name="" id=""> </center>
+                    <br>
+                    <!-- <center>  <label for="">Email:</label> <center>  -->
+                    <center><input style="border: white; background-color: #2a1a6f; font-size: 23px;
+                            font-family: cursive;" type="text" class="text-center mb-3 text-white" value="<%= e %>"
+                            name="" id="">
+                        <center>
+                            <br>
+
+
+
+
+                            <button class="btn btn-primary mb-3" data-bs-toggle="modal"
+                                data-bs-target="#updateprofile">Update Profile</button>
+                            <br>
+                            <a href="" class="btn btn-primary mb-4" data-bs-toggle="modal"
+                                data-bs-target="#changepassword">Change Password</a>
+                </div>
+                <div class="col-md-4"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal updateprofile -->
+    <div class="modal fade" id="updateprofile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/updateProfile" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="">Name</label>
+                            <input type="text" value="<%= n %>" name="name" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Email</label>
+                            <input type="text" value="<%= e %>" name="email" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Image</label>
+                            <center> <input type="file" name="image"> <img src="<%= i.url %>" alt="" width="175"
+                                    height="175" class="rounded-circle">
+                            </center>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal updateenddd -->
+
+    <!-- Modal Change Password
+    <div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        <div class="mb-3">
+                            <label for="">Old Password</label>
+                            <input type="text" name="" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">New Password</label>
+                            <input type="text" name="" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Confirm Password</label>
+                            <input type="text" name="" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+     modal Change Password end -->
+
+    <!-- Modal Change Password -->
+    <div class="modal fade" id="changepassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/changepassword" method="post">
+                        <div class="mb-3">
+                            <label for="">Old Password</label>
+                            <input type="text" name="op" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">New Password</label>
+                            <input type="text" name="np" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Confirm Password</label>
+                            <input type="text" name="cp" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal Change Password end -->
+
+
+
+    <%- include('./fot.ejs') %>

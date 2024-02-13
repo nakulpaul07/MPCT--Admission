@@ -1,0 +1,69 @@
+<%- include('../nav.ejs') %>
+
+<br><br><br><br>
+<h1 class="mt-5 text-center" style="font-family: Arial, Helvetica, sans-serif; font-weight: 700;font-style: italic; color: #172550;" >
+    Course-Edit
+</h1>
+
+<div class="container-fluid" >
+    <div class="row" >
+        <div class="col-md-4" ></div>
+        <div class="col-md-4" >
+            <div class="card" style="background-color: lightblue;" >
+            <form action="/course_update/<%= d._id %>" method="post">
+                <div class="">
+                <center>  <label for="" style="font-size: medium; font-weight: 400; ;">Name</label></center>
+                  <input type="text" name="name" value="<%= d.name %>" class="form-control" />
+                </div>
+                <div class="">
+                    <center> <label for="" style="font-size: medium; font-weight:  400;  ;">Email</label></center>
+                  <input type="text" name="email" value="<%= d.email %>" class="form-control" />
+                </div>
+                <div class="">
+                    <center> <label for="" style="font-size: medium; font-weight:  400;  ;">Phone No.</label></center>
+                  <input type="number" name="phone" value="<%= d.phone %>" class="form-control" />
+                </div>
+                <div class="">
+                    <center> <label for="" style="font-size: medium; font-weight:  400;  ;">D.O.B</label></center>
+                  <input type="date" name="dob"value="<%= d.dob %>" class="form-control" />
+                </div>
+                <div class="">
+                    <center>  <label for="" style="font-size: medium; font-weight:  400;  ;">Address</label></center>
+                  <textarea name="address" class="form-control">
+                    <%= d.address %>
+                  </textarea>
+                </div>
+                <div class="">
+                    <center> <label for="" style="font-size: medium; font-weight:  400;  ;">Gender</label></center>
+                 <center> <input type="radio" name="gender" value="male" />Male </center>
+                 <center> <input type="radio" name="gender" value="female" />Female </center>
+                </div>
+                <div class="">
+                    <center>  <label for="" style="font-size: medium; font-weight:  400;  ;">Education</label></center>
+                  <select name="education" class="form-control" id="">
+                    <option value="">Selete College</option>
+                    <option>10th</option>
+                    <option>12th</option>
+                  </select>
+                </div>
+                <div class="">
+                    <center> <label for="" style="font-size: medium; font-weight:  400;  ;">Course</label></center>
+                  <input
+                    type="text"
+                    name="course"
+                    value="B.Tech"
+                    readonly
+                    class="form-control"
+                  />
+                </div>
+                <center> <button type="submit" class="btn btn-secondary mb-4 mt-3" style="font-size: medium; font-weight:  400;  ;">Update</button> </center>
+              </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+<%- include('../fot.ejs') %>

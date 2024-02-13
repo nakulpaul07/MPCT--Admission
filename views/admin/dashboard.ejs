@@ -1,0 +1,75 @@
+<%- include('../nav.ejs') %>
+    <br><br><br><br>
+    <center>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>S No.</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Status</th>
+                        <th>Comment</th>
+                        <th></th>
+                        <th></th>
+
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <% i=1 %>
+                    <tbody>
+                        <% c.forEach((item)=> { %>
+
+                            <tr>
+                                <td>
+                                    <%= i++ %>
+                                </td>
+                                <td>
+                                    <%= item.name %>
+                                </td>
+                                <td>
+                                    <%= item.course %>
+                                </td>
+                                <td>
+                                    <%= item.status %>
+                                </td>
+                                <td>
+                                    <form action="/admin/update_status/<%= item._id %> " method="post">
+                                        <textarea name="comment" class="form-control"></textarea>
+                                        <input type="hidden" name="name" value="<%= item.name %>">
+                                        <input type="hidden" name="email" value="<%= item.email %>">
+
+                                </td>
+
+
+                                <td>
+                                    <button type="submit" name="status" class="btn btn-primary"
+                                        value="approved">Approved</button>
+                                    <br><br>
+                                    <button type="submit" name="status" class="btn btn-dark"
+                                        value="reject">Rejected</button>
+
+
+                                    </form>
+                                </td>
+                                <td>
+                                <td>
+                                    <a href="/course_view/<%= item._id %>">View</a> <br>
+                                    <a href="/course_edit/<%= item._id %>" class="">Edit</a>
+                                    <!-- <a href="/course_delete/<%= item._id %>" class="btn btn-danger"
+                                        class="fa-solid fa-trash">Delete</a> -->
+
+                                </td>
+
+                                </td>
+
+                            </tr>
+
+                            <% }) %>
+                    </tbody>
+            </table>
+        </div>
+    </center>
+
+
+    <%- include('../fot.ejs') %>
