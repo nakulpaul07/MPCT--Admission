@@ -31,6 +31,12 @@ route.post('/changepassword', checkUserAuth, FrontController.changepassword)
 route.get('/admin/dashboard', checkUserAuth, AdminController.dashboard)
 route.post('/admin/update_status/:id', checkUserAuth, AdminController.update_status)
 
+// forgetpassword
+route.get('/forget', FrontController.forgetload)
+route.post('/forget', FrontController.forgetverify)
+
+
+
 
 
 

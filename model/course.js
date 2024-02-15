@@ -53,6 +53,10 @@ const Courseschema = new mongoose.Schema({
         type: String,
         default: "Panding"
     },
+    token: {
+        type: String,
+        default: ''
+    }
 
 
 }, { timestamps: true })

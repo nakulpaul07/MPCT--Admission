@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const cloudinary = require('cloudinary').v2;
 const CourseModel = require('../model/course')
+const randomString = require('randomstring')
 
 cloudinary.config({
     cloud_name: 'dqqgdxtgx',
@@ -266,8 +267,65 @@ class FrontController {
         }
     };
 
+    // forget password
+
+    static forgetload = async (req, res) => {
+        try {
+            req.flash("msg", "Helo");
+            res.render('forget')
 
 
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    static forgetverify = async (req, res) => {
+        try {
+
+            const email = req.body
+            const userdata = await UserModel.findOne({ email: email })
+            if (userdata) {
+                if (userdata.email == email) {
+                    res.render('forget', { msg: "please ceck your email" })
+                }
+                else {
+                    const randomString = randormstring.generate()
+                    const updateData = await user.updateOne({ email: email }, { $set: { token: randomString } })
+                    sendResetPasswordMail(userdata.name, userdata.email, randomString)
+                }
+
+            }
+
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // for reset email
+    static sendResetPasswordMail = async (name, email, token) => {
+        // console.log(name,email,status,comment)
+        // connenct with the smtp server
+
+        let transporter = await nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+
+            auth: {
+                user: "nakulpal878@gmail.com",
+                pass: "ushxnskkerrwluhp",
+            },
+        });
+        let info = await transporter.sendMail({
+            from: "test@gmail.com", // sender address
+            to: email, // list of receivers
+            subject: ` For reset password  ${status}`, // Subject line
+            text: "heelo", // plain text body
+            html: `<b>${name}</b> forget password?token= ` + token + "", // html body
+        });
+    };
 
 
 };
